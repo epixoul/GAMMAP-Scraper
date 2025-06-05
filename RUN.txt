@@ -1,0 +1,7 @@
+----READ THIS----
+* After you downloaded the desired-system.zip file,
+* Extract it and run .bat/.sh file,
+* After the installation is done, close the terminal
+* Now you can enjoy the GAMMAP..
+-----------------
+* "https://github.com/epixoul/GAMMAP-Scraper" follow for more info and late updates.
