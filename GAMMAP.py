@@ -1,8 +1,8 @@
 import os
+import sys
 
 try:
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    os.chdir(current_dir)
-    os.system(fr"python {os.getcwd()}" + r"\Scraper.py")
+    current_dir = sys.path[0]
+    os.system(fr"python {current_dir}" + r"\Scraper.py")
 except Exception as e:
     print(e)

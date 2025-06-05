@@ -7,8 +7,11 @@ import dotenv
 import requests
 import win32com.client
 
+
 def push_env(val, key):
-    dotenv.set_key(dotenv.find_dotenv(), val,key)
+    dotenv.set_key(dotenv.find_dotenv(), val, key)
+
+
 def find_program_files_dirs():
     inst_env = [
         os.environ.get("ProgramFiles"),
@@ -38,7 +41,7 @@ def inst_setup():
     input_val = input("Is it right?(y/n) ")
     if input_val == "y":
         os.makedirs(inst_dir, exist_ok=True)
-        push_env("Inst_Path",inst_dir)
+        push_env("Inst_Path", inst_dir)
     else:
         inst_setup()
 
