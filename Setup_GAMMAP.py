@@ -19,7 +19,7 @@ def requirements(file):
 
 
 def run_asadmin(is_update):
-    script = os.path.dirname(os.path.realpath(__file__)) + r"\Ctr_GAMMAP.py"
+    script = os.getcwd() + r"\Ctr_GAMMAP.py"
     prams = ''.join([script] + sys.argv[1:] + [' asadmin'] + [f' {is_update}'])
     ctypes.windll.shell32.ShellExecuteW(None, 'runas', sys.executable, prams, None, 1)
 

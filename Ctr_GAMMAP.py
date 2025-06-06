@@ -6,10 +6,23 @@ import zipfile
 import dotenv
 import requests
 import win32com.client
+global inst_dir
+
+def load_up_env():
+    dotenv.load_dotenv()
+    try:
+        if os.getenv("Inst_Path"):
+            dest_dir = os.getenv("Inst_Path") + r"\source"
+        else:
+            dest_dir = inst_dir + r"\source"
+        shutil.copy(".env", os.path.abspath(dest_dir))
+    except Exception as e:
+        print(e)
 
 
-def push_env(val, key):
-    dotenv.set_key(dotenv.find_dotenv(), val, key)
+def push_env(key, val):
+    dotenv.load_dotenv()
+    dotenv.set_key(".env", key, val)
 
 
 def find_program_files_dirs():
@@ -22,6 +35,7 @@ def find_program_files_dirs():
 
 
 def inst_setup():
+    global inst_dir
     ext = "\\ESoul\\GAMMAP"
     def_path = find_program_files_dirs()[0] + ext
     inst_dir = input(f"Default path would be: \"{def_path}\""
@@ -80,7 +94,10 @@ def generate_short(inst_dir):
 
 def load_up_files(is_update):
     dotenv.load_dotenv()
-    dest_dir = os.getenv("Inst_Path") + r"\source"
+    if os.getenv("Inst_Path"):
+        dest_dir = os.getenv("Inst_Path") + r"\source"
+    else:
+        dest_dir = inst_dir + r"\source"
     if is_update:
         print(f"✅ Source files already exist.")
         print("Updating files...")
@@ -109,8 +126,11 @@ def load_up_files(is_update):
 
 
 def fetch_driver(is_update):
-    dotenv.load_dotenv()
-    dest_dir = os.getenv("Inst_Path") + r"\drivers"
+    dotenv.load_dotenv(".env")
+    if os.getenv("Inst_Path"):
+        dest_dir = os.getenv("Inst_Path") + r"\drivers"
+    else:
+        dest_dir = inst_dir + r"\drivers"
     driver = os.getenv(f"{os.getenv("Desired_Driver")}")
     if is_update:
         print(f"✅ Driver \"{driver}\" already exist.")
@@ -136,4 +156,5 @@ if __name__ == '__main__':
     generate_short(os.getenv("Inst_Path"))
     load_up_files(is_update)
     fetch_driver(is_update)
-    input("🦜 Check the \"log_gammap.txt\" file or put comment on e, if any error occurred.")
+    load_up_env()
+    input("🦜 Check the \"log_gammap.txt\" file or put a comment on github, if any error occurred.")
