@@ -77,7 +77,7 @@ def zip_fetch(url, dest_dir):
         shutil.rmtree(dest_dir + "\\" + os.listdir(dest_dir)[0], ignore_errors=True)
 
 
-def generate_short(inst_dir):
+def generate_short():
     try:
         short_path = os.path.join(os.path.expanduser("~"), "Desktop", "GAMMAP.lnk")
         targ_path = inst_dir + r"\source\GAMMAP.py"
@@ -153,7 +153,7 @@ if __name__ == '__main__':
         print("🔼 Running as update:", bool(int(args[1])))
         is_update = bool(int(args[1]))
     inst_setup()
-    generate_short(os.getenv("Inst_Path"))
+    generate_short()
     load_up_files(is_update)
     fetch_driver(is_update)
     load_up_env()
