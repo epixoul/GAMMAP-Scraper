@@ -52,6 +52,8 @@
     </tr>
   </table>
 </div>
+</br>
+</br>
 <div align="center" width="100%">
   <img src="https://github.com/epixoul/GAMMAP-Scraper/blob/main-shank/GAMMAP_ICON.png" alt="GAMMAP" width="250">
 
