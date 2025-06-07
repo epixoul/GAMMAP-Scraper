@@ -80,7 +80,7 @@ def zip_fetch(url, dest_dir):
 def generate_short():
     try:
         short_path = os.path.join(os.path.expanduser("~"), "Desktop", "GAMMAP.lnk")
-        targ_path = inst_dir + r"\source\GAMMAP.py"
+        targ_path = inst_dir + r"\source\GAMMAP.bat"
         icon_path = inst_dir + r"\source\GAMMAP_ICON.ico"
         shell = win32com.client.Dispatch("WScript.Shell")
         shortcut = shell.CreateShortCut(short_path)
